@@ -10,7 +10,7 @@ class Battleship
     @computer_board = Board.new
     @player_board = Board.new
   end
-
+  #
   def start
     opening_sequence
     play
@@ -25,7 +25,8 @@ class Battleship
 
   def play(input = gets.chomp)
     if input == "f"
-      player.shoot
+      puts "Please enter the coordinates you wish to fire upon."
+      player.shoot(coords = gets.chomp)
     elsif input == "l"
       instructions
     elsif input == "d"
@@ -52,6 +53,3 @@ class Battleship
   end
 
 end
-
-game = Battleship.new
-game.start
