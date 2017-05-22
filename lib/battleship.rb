@@ -3,14 +3,14 @@ require './lib/board.rb'
 
 class Battleship
 
-  attr_accessor :player
+  attr_accessor :player, :computer_board, :player_board
 
   def initialize
     @player = Player.new
     @computer_board = Board.new
     @player_board = Board.new
   end
-  #
+
   def start
     opening_sequence
     play
@@ -55,9 +55,10 @@ class Battleship
   def player_ship_placement
     puts "Place your men in formation on the field. You have one group of men spanning two units, and one group of men spanning three units."
     puts "Please enter your first placement of two units. Example: A2 B4"
-    player.ship_placement
-    player_board.player_ship_placement
+    # player = Player.new
+    player_board.player_ship_placement(@player)
     puts "Please enter your second placement of three units. Example: A1 B1 C1"
+    player_board.player_ship_placement(@player)
   end
 
 

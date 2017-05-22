@@ -34,7 +34,7 @@ class BattleshipTest < Minitest::Test
 
   def test_game_play_when_press_f
     game = Battleship.new
-    assert_equal game.play(input = "f"), ["A2", "B4"]
+    assert_equal game.play(input = "f"), [:A2, :B4]
   end
 
   def test_game_play_when_press_l
