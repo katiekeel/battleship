@@ -52,4 +52,13 @@ class Battleship
     "Please decide what you would like to do."
   end
 
+  def player_ship_placement
+    puts "Place your men in formation on the field. You have one group of men spanning two units, and one group of men spanning three units."
+    puts "Please enter your first placement of two units. Example: A2 B4"
+    player.ship_placement
+    player_board.player_ship_placement
+    puts "Please enter your second placement of three units. Example: A1 B1 C1"
+  end
+
+
 end

@@ -78,6 +78,9 @@ class Board
     end
   end
 
+  def player_ship_placement
+  end
+
 
 
 end
