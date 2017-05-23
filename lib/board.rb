@@ -44,14 +44,13 @@ class Board
 
     def two_unit_player_ship_placement(player)
       coords = player.enter_ship
-      if two_unit_valid?(coords)
+      if player_two_unit_valid?(coords)
         coords.each do |coord|
           game_board.each do |item|
             item[coord] = "X" if item.key?(coord) && item[coord] != "X"
           end
         end
       else
-        puts "Invalid coords, try again"
         two_unit_player_ship_placement(player)
       end
       display_board
@@ -59,7 +58,7 @@ class Board
 
   def two_unit_computer_ship_placement
     coords = get_random_keys.sample(2)
-    until two_unit_valid?(coords)
+    until computer_two_unit_valid?(coords)
       coords = get_random_keys.sample(2)
     end
     coords.each do |coord|
@@ -90,7 +89,7 @@ class Board
       random_keys
     end
 
-  def two_unit_valid?(coords)
+  def computer_two_unit_valid?(coords)
     first_coord = coords[0]
     second_coord = coords[1]
     if first_coord.nil? || second_coord.nil?
@@ -114,25 +113,59 @@ class Board
     end
   end
 
+  def player_two_unit_valid?(coords)
+    first_coord = coords[0]
+    second_coord = coords[1]
+    if first_coord.nil? || second_coord.nil?
+      puts "\n\nPlease enter complete and correct starting and ending coordinates for a two unit group, such as: A1 B1\n\n"
+      false
+    elsif first_coord[0] == second_coord[0]
+      if second_coord[1].to_i == first_coord[1].to_i - 1 || second_coord[1].to_i == first_coord[1].to_i + 1
+        true
+      else
+        puts "\n\nPlease enter complete and correct starting and ending coordinates for a two unit group, such as: A1 B1\n\n"
+        false
+      end
+    elsif second_coord[0].ord == first_coord[0].ord + 1
+      if second_coord[1] == first_coord[1]
+       true
+      else
+        puts "\n\nPlease enter complete and correct starting and ending coordinates for a two unit group, such as: A1 B1\n\n"
+        false
+      end
+    elsif second_coord[0].ord == first_coord[0].ord - 1
+      if second_coord[1] == first_coord[1]
+        true
+      else
+        puts "\n\nPlease enter complete and correct starting and ending coordinates for a two unit group, such as: A1 B1\n\n"
+        false
+      end
+    else
+      puts "\n\nPlease enter complete and correct starting and ending coordinates for a two unit group, such as: A1 B1\n\n"
+      false
+    end
+  end
+
+
   def player_three_unit_valid?(coords)
     first_coord = coords[0]
     second_coord = coords[1]
     # binding.pry
     if first_coord.nil? || second_coord.nil?
-      puts "Please enter valid and complete coordinates for a three-unit ship, in order."
+      puts "\n\nPlease enter valid and complete coordinates for a three-unit ship, in order.\n\n"
       false
     elsif first_coord[1].to_i > second_coord[1].to_i
-      puts "Please enter your coordinates in letter and number order, such as: A1 C1, not C1 A1"
+      puts "\n\nPlease enter your coordinates in letter and number order, such as: A1 C1, not C1 A1\n\n"
       false
     elsif first_coord[0].ord > second_coord[0].ord
-      puts "Please enter your coordinates in letter and number order, such as: A1 C1, not C1 A1"
+      puts "\n\nPlease enter your coordinates in letter and number order, such as: A1 C1, not C1 A1\n\n"
       false
     elsif first_coord[0] == second_coord[0]
       player_second_ship_valid?(coords) if second_coord[1].to_i == first_coord[1].to_i - 2 || second_coord[1].to_i == first_coord[1].to_i + 2
     elsif second_coord[0].ord == first_coord[0].ord + 2
       player_second_ship_valid?(coords) if second_coord[1] == first_coord[1]
     else
-      puts "Please enter valid and complete coordinates for a three-unit ship."
+      puts "\n\nPlease enter valid and complete coordinates for a three-unit ship.\n\n"
       false
     end
 
@@ -162,7 +195,7 @@ class Board
     coords.each do |coord|
       game_board.each do |row|
         if row[coord] == "X"
-          puts "There is already a ship placed at one of these coordinates; please try again."
+          puts "\n\nThere is already a ship placed at one of these coordinates; please try again.\n\n"
           return false
         else
           true
@@ -204,10 +237,7 @@ class Board
 
   def three_unit_player_ship_placement(player)
     coords = player.enter_ship
-    # binding.pry
     if player_three_unit_valid?(coords)
-      # Insert 1st X at 1st coord
-      # Insert last x at 2nd coord
       coords.each do |coord|
         game_board.each do |item|
           if item.key?(coord)
@@ -215,13 +245,11 @@ class Board
           end
         end
       end
+      same_row(coords) if coords[0][0] == coords[1][0]
+      same_column(coords) if coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
     else
       three_unit_player_ship_placement(player)
     end
-    # binding.pry
-    same_row(coords)
-    same_column(coords)
-
     display_board
   end
 

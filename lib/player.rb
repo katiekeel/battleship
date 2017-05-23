@@ -7,9 +7,19 @@ class Player
 
   def get_coords(coords = gets.chomp)
     coords = coords.gsub(/\s+/, "").scan(/../)
-    coords = coords.map {|coord| coord.to_sym}
-    coords
+    coords_to_upcase(coords)
+    upcase_coords = coords.map {|coord| coord.to_sym}
+    upcase_coords
   end
+
+  def coords_to_upcase(coords)
+    upcase_coords = coords.map do |coord|
+      coord[0] = coord[0].upcase
+      coord[1] = coord[1]
+    end
+    upcase_coords
+  end
+
 
   def enter_ship
     get_coords
