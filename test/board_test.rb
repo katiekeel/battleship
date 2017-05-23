@@ -46,31 +46,16 @@ class BoardTest < Minitest::Test
     assert_equal board.equals_nums_rows[:bottom_equals_row], ["=", "=", "=", "=", "="].join("")
   end
 
-  def test_computer_game_board_exists
+  def test_game_board_exists
     board = Board.new
-    assert board.computer_game_board
+    assert board.game_board
   end
 
-  def test_computer_display_board_exists
+  def test_display_board_exists
     board = Board.new
-    assert board.computer_display_board
+    assert board.display_board
   end
 
-  def test_player_game_board_exists
-    board = Board.new
-    assert board.player_game_board
-  end
-
-  def test_player_display_board_exists
-    board = Board.new
-    assert board.player_display_board
-  end
-
-  def test_player_ship_placement
-    board = Board.new
-    player = Player.new
-    assert_equal board.player_ship_placement(player), board.player_display_board
-  end
 
 
 end

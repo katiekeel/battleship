@@ -11,7 +11,7 @@ class Player
     coords
   end
 
-  def ship_placement
+  def enter_ship
     get_coords
   end
 

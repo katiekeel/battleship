@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -19,7 +21,7 @@ class BattleshipTest < Minitest::Test
 
   def test_instructions
     game = Battleship.new
-    assert_equal game.instructions, "To kill these foul orcs, command your men to fire on their position using coordinates, such as: A4 B2"
+    assert_equal game.instructions, "To kill these foul orcs, command your men to fire on their position using coordinates, such as: A1 B1"
   end
 
   def test_coward_quit
@@ -29,17 +31,18 @@ class BattleshipTest < Minitest::Test
 
   def test_invalid_input
     game = Battleship.new
-    assert_equal game.invalid_input, "Please decide what you would like to do."
+    assert_equal game.invalid_input, "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war."
   end
 
   def test_game_play_when_press_f
+    skip
     game = Battleship.new
-    assert_equal game.play(input = "f"), [:A2, :B4]
+    assert_equal game.play(input = "f"), player_ship_placement
   end
 
   def test_game_play_when_press_l
     game = Battleship.new
-    assert_equal game.play(input = "l"), "To kill these foul orcs, command your men to fire on their position using coordinates, such as: A4 B2"
+    assert_equal game.play(input = "l"), "To kill these foul orcs, command your men to fire on their position using coordinates, such as: A1 B1"
   end
 
   def test_game_play_when_press_d
@@ -49,12 +52,24 @@ class BattleshipTest < Minitest::Test
 
   def test_game_play_when_press_anything_else
     game = Battleship.new
-    assert_equal game.play(input = "asdf"), "Please decide what you would like to do."
+    assert_equal game.play(input = "asdf"), "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war."
   end
 
   def test_start_plays_game
     skip
     game = Battleship.new
     game.start
+  end
+
+  def test_computer_ship_placement
+    skip
+    game = Battleship.new
+    game.computer_ship_placement
+  end
+
+  def test_player_ship_placement
+    skip
+    game = Battleship.new
+    game.player_ship_placement
   end
 end
