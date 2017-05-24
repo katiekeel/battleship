@@ -1,8 +1,10 @@
 require 'pry'
-require './lib/board.rb'
+require './lib/player.rb'
+require './player_board.rb'
+require './computer_board.rb'
 
-computer_board = Board.new
-player_board = Board.new
+computer_board = ComputerBoard.new
+player_board = PlayerBoard.new
 player = Player.new
 
 # binding.pry
