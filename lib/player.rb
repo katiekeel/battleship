@@ -1,9 +1,6 @@
-require './lib/board.rb'
-require './lib/battleship.rb'
-
 class Player
 
-  attr_accessor :shoot, :ship_placement
+  attr_accessor :shoot, :group_placement
 
   def get_coords(coords = gets.chomp)
     coords = coords.gsub(/\s+/, "").scan(/../)
@@ -20,13 +17,8 @@ class Player
     upcase_coords
   end
 
-
-  def enter_ship
+  def enter_group
     get_coords
-  end
-
-  def shoot(coords)
-    get_coords(coords)
   end
 
 end

@@ -1,5 +1,12 @@
 require 'pry'
-require './lib/battleship.rb'
+require './lib/board.rb'
 
-game = Battleship.new
-game.opening_sequence
+computer_board = Board.new
+player_board = Board.new
+player = Player.new
+
+# binding.pry
+computer_board.two_unit_computer_group_placement
+computer_board.three_unit_computer_group_placement
+puts computer_board.display_board
+puts computer_board

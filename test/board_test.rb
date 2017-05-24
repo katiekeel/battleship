@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -13,12 +15,12 @@ class BoardTest < Minitest::Test
 
   def test_board_has_top_equals_row
     board = Board.new
-    assert_equal board.equals_nums_rows[:top_equals_row], "====="
+    assert_equal board.equals_nums_rows[:top_equals_row], ["=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "="].join("")
   end
 
   def test_board_has_numbers_row
     board = Board.new
-    assert_equal board.equals_nums_rows[:nums_row], ".1234"
+    assert_equal board.equals_nums_rows[:nums_row], [".", 1, 2, 3, 4].join("   ")
   end
 
   def test_board_has_a_row
@@ -43,19 +45,32 @@ class BoardTest < Minitest::Test
 
   def test_board_has_bottom_equals_row
     board = Board.new
-    assert_equal board.equals_nums_rows[:bottom_equals_row], ["=", "=", "=", "=", "="].join("")
+    assert_equal board.equals_nums_rows[:bottom_equals_row], ["=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "="].join("")
   end
 
-  def test_game_board_exists
+  def test_board_has_game_board
+    skip
     board = Board.new
-    assert board.game_board
+    assert_equal board.game_board, game_board
   end
 
-  def test_display_board_exists
+  def test_board_has_display_board
+    skip
     board = Board.new
-    assert board.display_board
+    assert_equal board.display_board
   end
 
+  def test_computer_can_place_two_unit_group
+    skip
+    board = Board.new
+    board.two_unit_computer_group_placement
+  end
+
+  def test_computer_can_place_three_unit_group
+    skip
+    board = Board.new
+    board.three_unit_computer_group_placement
+  end
 
 
 end

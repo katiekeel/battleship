@@ -1,6 +1,5 @@
 require 'pry'
-require './lib/battleship.rb'
+require './lib/battle_orcs.rb'
 
-game = Battleship.new
-game.opening_sequence
-game.play
+game = BattleOrcs.new
+game.start
