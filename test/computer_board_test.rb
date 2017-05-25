@@ -37,10 +37,12 @@ class ComputerBoardTest < Minitest::Test
 
   def test_computer_board_has_c_row
     computer_board = ComputerBoard.new
+    assert_equal computer_board.c_row, {:C => "C", :C1 => " ", :C2 => " ", :C3 => " ", :C4 => " "}
   end
 
   def test_computer_board_has_d_row
     computer_board = ComputerBoard.new
+    assert_equal computer_board.d_row, {:D => "D", :D1 => " ", :D2 => " ", :D3 => " ", :D4 => " "}
   end
 
   def test_computer_shot_number_is_zero_at_start

@@ -25,7 +25,6 @@ class BattleOrcs
 
   def start
     puts "\n\nThe war against our Enemy is begun!"
-    return "\n\nThe war against our Enemy is begun!"
     opening_sequence
     play
     end_sequence
@@ -41,7 +40,6 @@ class BattleOrcs
   def play(input = gets.chomp)
     puts "\n\n\n\n"
     if input == "f" || input == "F"
-      return "\n\nThe war is begun!\n\n"
       computer_group_placement
       player_group_placement
       shoot
@@ -63,7 +61,6 @@ class BattleOrcs
     puts "A three unit group might be placed at C1 C3, or A1 A3. If you have previously placed a group in one of these coordinates, you may not place\nanother group there.\n\n"
     puts "You and the Enemy will take turns firing missiles at the other; whoever destroys all of the other's men first wins the battle!\n\n"
     puts "\n========================"
-    return "===== INSTRUCTIONS ====="
     opening_sequence
     play
   end
@@ -75,7 +72,6 @@ class BattleOrcs
 
   def invalid_input
     puts "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
-    return "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
     play
   end
 
@@ -110,23 +106,21 @@ class BattleOrcs
     puts @player_board.display_board
     puts "\n\n"
     puts "Prepare to fight!\n\n\n"
-    return "Prepare to fight!\n\n\n"
+    puts "We shall strike first! Enter the coordinate you wish to shoot at:\n\n"
   end
 
   def shoot
-    return "\n\nWe shall strike first! Forth to victory!\n\n"
-    puts "\n\nWe shall strike first! Forth to victory!\n\n"
     until @computer_board.computer_groups_killed? || @player_board.player_groups_killed?
       @computer_board.player_shoot(player) unless @player_board.player_groups_killed?
       check_if_group_killed
       @player_board.computer_shoot unless @computer_board.computer_groups_killed?
       check_if_group_killed
-      puts "\n\nMy liege, press ENTER to end your turn."
-      end_player_turn
     end
   end
 
-  def end_player_turn(input = gets)
+  def end_player_turn
+    puts "\n\nMy liege, press ENTER to end this turn."
+    input = gets
     if input == "\n"
       shoot
     else
@@ -136,7 +130,6 @@ class BattleOrcs
   end
 
   def check_if_group_killed
-    return "yep"
     if @player_board.player_two_group_killed?
       unless @player_two_already_killed == true
         puts "\n\nMy liege, they have destroyed our two-unit group! We must hasten to victory!\n\n"
@@ -161,7 +154,6 @@ class BattleOrcs
   end
 
   def end_sequence
-    return "\n\nThe battle is over!\n\n"
     puts "\n\nThe battle is over!\n\n"
     if @computer_board.computer_groups_killed?
       puts "\n\nVICTORY! Victory this day against the accursed Enemy.\n\n"

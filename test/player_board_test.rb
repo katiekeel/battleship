@@ -39,10 +39,12 @@ class PlayerBoardTest < Minitest::Test
 
   def test_player_board_has_c_row
     player_board = PlayerBoard.new
+    assert_equal player_board.c_row, {:C => "C", :C1 => " ", :C2 => " ", :C3 => " ", :C4 => " "}
   end
 
   def test_player_board_has_d_row
     player_board = PlayerBoard.new
+    assert_equal player_board.d_row, {:D => "D", :D1 => " ", :D2 => " ", :D3 => " ", :D4 => " "}
   end
 
   def test_computer_shot_number_is_zero_at_start

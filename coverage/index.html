@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-05-25T07:21:42-06:00">2017-05-25T07:21:42-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-05-25T07:29:30-06:00">2017-05-25T07:29:30-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.91
+         5.37
        </span>
     </span> hits/line)
   </h2>
@@ -57,7 +57,7 @@
         <td>44</td>
         <td>44</td>
         <td>0</td>
-        <td>30.2</td>
+        <td>26.6</td>
       </tr>
       
       <tr>
@@ -67,7 +67,7 @@
         <td>155</td>
         <td>110</td>
         <td>45</td>
-        <td>4.8</td>
+        <td>4.6</td>
       </tr>
       
       <tr>
@@ -210,8 +210,8 @@
           <code class="ruby">  def game_board</code>
         </li>
       
-        <li class="covered" data-hits="68" data-linenumber="16">
-          <span class="hits">68</span>
+        <li class="covered" data-hits="63" data-linenumber="16">
+          <span class="hits">63</span>
           
           <code class="ruby">    game_board = [@a_row, @b_row, @c_row, @d_row]</code>
         </li>
@@ -300,38 +300,38 @@
           <code class="ruby">    def same_row(coords)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="31">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
           
           <code class="ruby">      if coords[0][0] == coords[1][0]</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="32">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="32">
+          <span class="hits">1</span>
           
           <code class="ruby">        coord = &quot;&quot;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="33">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="33">
+          <span class="hits">1</span>
           
           <code class="ruby">        coord &lt;&lt; coords[0][0]</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="34">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="34">
+          <span class="hits">1</span>
           
           <code class="ruby">        coord_num = coords[0][1].to_i + 1</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="35">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="35">
+          <span class="hits">1</span>
           
           <code class="ruby">        coord += coord_num.to_s</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="36">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="36">
+          <span class="hits">1</span>
           
           <code class="ruby">        coord = coord.to_sym</code>
         </li>
@@ -348,20 +348,20 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="39">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="39">
+          <span class="hits">1</span>
           
           <code class="ruby">      game_board.each do |item|</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="40">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="4" data-linenumber="40">
+          <span class="hits">4</span>
           
           <code class="ruby">        if item.key?(coord)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="41">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="41">
+          <span class="hits">1</span>
           
           <code class="ruby">          item[coord] = &quot;X&quot;</code>
         </li>
@@ -396,32 +396,32 @@
           <code class="ruby">    def same_column(coords)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="47">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="47">
+          <span class="hits">2</span>
           
           <code class="ruby">      if coords[0][0].ord + 2 == coords[1][0].ord</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="48">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="48">
+          <span class="hits">2</span>
           
           <code class="ruby">        coord = &quot;&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="49">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="49">
+          <span class="hits">2</span>
           
           <code class="ruby">        coord &lt;&lt; coords[0][0].ord + 1</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="50">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="50">
+          <span class="hits">2</span>
           
           <code class="ruby">        coord += coords[0][1]</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="51">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="51">
+          <span class="hits">2</span>
           
           <code class="ruby">        coord = coord.to_sym</code>
         </li>
@@ -432,20 +432,20 @@
           <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="53">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="53">
+          <span class="hits">2</span>
           
           <code class="ruby">    game_board.each do |item|</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="54">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="8" data-linenumber="54">
+          <span class="hits">8</span>
           
           <code class="ruby">      if item.key?(coord)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="55">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="55">
+          <span class="hits">2</span>
           
           <code class="ruby">        item[coord] = &quot;X&quot;</code>
         </li>
@@ -486,26 +486,26 @@
           <code class="ruby">  def get_random_keys</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="62">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="33" data-linenumber="62">
+          <span class="hits">33</span>
           
           <code class="ruby">    random_keys = []</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="63">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="33" data-linenumber="63">
+          <span class="hits">33</span>
           
           <code class="ruby">    game_board.each do |thing|</code>
         </li>
       
-        <li class="covered" data-hits="152" data-linenumber="64">
-          <span class="hits">152</span>
+        <li class="covered" data-hits="132" data-linenumber="64">
+          <span class="hits">132</span>
           
           <code class="ruby">      next if thing.is_a? String</code>
         </li>
       
-        <li class="covered" data-hits="152" data-linenumber="65">
-          <span class="hits">152</span>
+        <li class="covered" data-hits="132" data-linenumber="65">
+          <span class="hits">132</span>
           
           <code class="ruby">      random_keys &lt;&lt; thing.keys</code>
         </li>
@@ -516,8 +516,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="67">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="33" data-linenumber="67">
+          <span class="hits">33</span>
           
           <code class="ruby">    delete_invalid_keys(random_keys)</code>
         </li>
@@ -540,20 +540,20 @@
           <code class="ruby">  def delete_invalid_keys(random_keys)</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="71">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="33" data-linenumber="71">
+          <span class="hits">33</span>
           
           <code class="ruby">    random_keys.map! do |item|</code>
         </li>
       
-        <li class="covered" data-hits="152" data-linenumber="72">
-          <span class="hits">152</span>
+        <li class="covered" data-hits="132" data-linenumber="72">
+          <span class="hits">132</span>
           
           <code class="ruby">      item.drop_while do |key|</code>
         </li>
       
-        <li class="covered" data-hits="304" data-linenumber="73">
-          <span class="hits">304</span>
+        <li class="covered" data-hits="264" data-linenumber="73">
+          <span class="hits">264</span>
           
           <code class="ruby">        key == :A || key == :B || key == :C || key == :D</code>
         </li>
@@ -570,8 +570,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="76">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="33" data-linenumber="76">
+          <span class="hits">33</span>
           
           <code class="ruby">    valid_random_keys(random_keys)</code>
         </li>
@@ -594,14 +594,14 @@
           <code class="ruby">  def valid_random_keys(random_keys)</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="80">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="33" data-linenumber="80">
+          <span class="hits">33</span>
           
           <code class="ruby">    random_keys.map! do |item|</code>
         </li>
       
-        <li class="covered" data-hits="152" data-linenumber="81">
-          <span class="hits">152</span>
+        <li class="covered" data-hits="132" data-linenumber="81">
+          <span class="hits">132</span>
           
           <code class="ruby">      item.sample(2)</code>
         </li>
@@ -612,8 +612,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="83">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="33" data-linenumber="83">
+          <span class="hits">33</span>
           
           <code class="ruby">    random_keys</code>
         </li>
@@ -1050,20 +1050,20 @@
           <code class="ruby">  def computer_two_unit_valid?(coords)</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="66">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="19" data-linenumber="66">
+          <span class="hits">19</span>
           
           <code class="ruby">    first_coord = coords[0]</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="67">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="19" data-linenumber="67">
+          <span class="hits">19</span>
           
           <code class="ruby">    second_coord = coords[1]</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="68">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="19" data-linenumber="68">
+          <span class="hits">19</span>
           
           <code class="ruby">    if first_coord.nil? || second_coord.nil?</code>
         </li>
@@ -1074,8 +1074,8 @@
           <code class="ruby">      false</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="70">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="19" data-linenumber="70">
+          <span class="hits">19</span>
           
           <code class="ruby">    elsif first_coord[0] == second_coord[0]</code>
         </li>
@@ -1086,20 +1086,20 @@
           <code class="ruby">      true if second_coord[1].to_i == first_coord[1].to_i - 1 || second_coord[1].to_i == first_coord[1].to_i + 1</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="72">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="17" data-linenumber="72">
+          <span class="hits">17</span>
           
           <code class="ruby">    elsif second_coord[0].ord == first_coord[0].ord + 1</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="73">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="5" data-linenumber="73">
+          <span class="hits">5</span>
           
           <code class="ruby">      if second_coord[1] == first_coord[1]</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="74">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="74">
+          <span class="hits">3</span>
           
           <code class="ruby">       true</code>
         </li>
@@ -1122,14 +1122,14 @@
           <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="78">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="12" data-linenumber="78">
+          <span class="hits">12</span>
           
           <code class="ruby">    elsif second_coord[0].ord == first_coord[0].ord - 1</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="79">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="5" data-linenumber="79">
+          <span class="hits">5</span>
           
           <code class="ruby">        false</code>
         </li>
@@ -1140,8 +1140,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="81">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="7" data-linenumber="81">
+          <span class="hits">7</span>
           
           <code class="ruby">      false</code>
         </li>
@@ -1170,14 +1170,14 @@
           <code class="ruby">  def computer_three_unit_valid?(coords)</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="86">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="18" data-linenumber="86">
+          <span class="hits">18</span>
           
           <code class="ruby">    first_coord = coords[0]</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="87">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="18" data-linenumber="87">
+          <span class="hits">18</span>
           
           <code class="ruby">    second_coord = coords[1]</code>
         </li>
@@ -1188,8 +1188,8 @@
           <code class="ruby">    # binding.pry</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="89">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="18" data-linenumber="89">
+          <span class="hits">18</span>
           
           <code class="ruby">    if first_coord.nil? || second_coord.nil?</code>
         </li>
@@ -1200,20 +1200,20 @@
           <code class="ruby">      false</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="91">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="18" data-linenumber="91">
+          <span class="hits">18</span>
           
           <code class="ruby">    elsif first_coord[1].to_i &gt; second_coord[1].to_i</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="92">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="4" data-linenumber="92">
+          <span class="hits">4</span>
           
           <code class="ruby">      false</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="93">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="14" data-linenumber="93">
+          <span class="hits">14</span>
           
           <code class="ruby">    elsif first_coord[0].ord &gt; second_coord[0].ord</code>
         </li>
@@ -1224,8 +1224,8 @@
           <code class="ruby">      false</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="95">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="7" data-linenumber="95">
+          <span class="hits">7</span>
           
           <code class="ruby">    elsif first_coord[0] == second_coord[0]</code>
         </li>
@@ -1236,14 +1236,14 @@
           <code class="ruby">      computer_second_group_valid?(coords) if second_coord[1].to_i == first_coord[1].to_i - 2 || second_coord[1].to_i == first_coord[1].to_i + 2</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="97">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="4" data-linenumber="97">
+          <span class="hits">4</span>
           
           <code class="ruby">    elsif second_coord[0].ord == first_coord[0].ord + 2</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="98">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="98">
+          <span class="hits">3</span>
           
           <code class="ruby">      computer_second_group_valid?(coords) if second_coord[1] == first_coord[1]</code>
         </li>
@@ -1254,8 +1254,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="100">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="1" data-linenumber="100">
+          <span class="hits">1</span>
           
           <code class="ruby">      false</code>
         </li>
@@ -1290,26 +1290,26 @@
           <code class="ruby">    if coords[0][0].ord + 2 == coords[1][0].ord</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="106">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="106">
+          <span class="hits">3</span>
           
           <code class="ruby">      middle_coord = &quot;&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="107">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="107">
+          <span class="hits">3</span>
           
           <code class="ruby">      middle_coord &lt;&lt; coords[0][0].ord + 1</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="108">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="108">
+          <span class="hits">3</span>
           
           <code class="ruby">      middle_coord += coords[0][1]</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="109">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="109">
+          <span class="hits">3</span>
           
           <code class="ruby">      middle_coord = middle_coord.to_sym</code>
         </li>
@@ -1434,8 +1434,8 @@
           <code class="ruby">    until computer_three_unit_valid?(coords)</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="130">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="13" data-linenumber="130">
+          <span class="hits">13</span>
           
           <code class="ruby">      coords = get_random_keys.flatten.sample(2)</code>
         </li>

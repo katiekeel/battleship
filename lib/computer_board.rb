@@ -143,7 +143,7 @@ class ComputerBoard
   end
 
 
-  def player_shoot(player, coord = player.get_coords)
+  def player_shoot(player)
     if player_shot_number == 0
       puts "\n\nEnter a coordinate to shoot at, captain!\n\n"
       puts player_shot_display_board
@@ -152,6 +152,7 @@ class ComputerBoard
       puts "\n\nHere is where we have previously shot:\n\n"
       puts player_shot_display_board
     end
+    coord = player.get_coords
     coord = coord[0]
     place_player_shot(coord, player)
   end
