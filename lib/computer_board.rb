@@ -58,6 +58,7 @@ class ComputerBoard
     coords = get_random_keys.flatten.sample(2) until computer_two_unit_valid?(coords)
     @two_ship_computer_coords = coords
     place_two_unit_group(coords)
+    return display_board
   end
 
 
@@ -142,7 +143,7 @@ class ComputerBoard
   end
 
 
-  def player_shoot(player)
+  def player_shoot(player, coord = player.get_coords)
     if player_shot_number == 0
       puts "\n\nEnter a coordinate to shoot at, captain!\n\n"
       puts player_shot_display_board
@@ -151,7 +152,6 @@ class ComputerBoard
       puts "\n\nHere is where we have previously shot:\n\n"
       puts player_shot_display_board
     end
-    coord = player.get_coords
     coord = coord[0]
     place_player_shot(coord, player)
   end
