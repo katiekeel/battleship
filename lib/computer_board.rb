@@ -148,16 +148,16 @@ class ComputerBoard
       row_counter += 1
       if row.key?(coord)
         if row[coord] == "X"
-          row_has_group(row, coord, row_counter)
+          row_has_group(row, coord, row_counter, player)
         elsif row[coord] == " "
-          row_does_not_have_group(row, coord, row_counter)
+          row_does_not_have_group(row, coord, row_counter, player)
         end
       end
     end
     @player_shot_number += 1
   end
 
-  def row_has_group(row, coord, row_counter)
+  def row_has_group(row, coord, row_counter, player)
     if player_shot_game_board[row_counter][coord] == "M" || player_shot_game_board[row_counter][coord] == "H"
       puts "\n\nLiege, you have already shot in that location! Please try again.\n\n"
       player_shoot(player)
@@ -168,7 +168,7 @@ class ComputerBoard
     end
   end
 
-  def row_does_not_have_group(row, coord, row_counter)
+  def row_does_not_have_group(row, coord, row_counter, player)
     if player_shot_game_board[row_counter][coord] == "M" || player_shot_game_board[row_counter][coord] == "H"
       puts "\n\nLiege, you have already shot in that location! Please try again.\n\n"
       player_shoot(player)
