@@ -14,34 +14,17 @@ class PlayerBoardTest < Minitest::Test
     assert_instance_of PlayerBoard, player_board
   end
 
-  def test_player_board_has_game_board
-    skip
-    player_board = PlayerBoard.new
-    assert_equal player_board.game_board, [@a_row, @b_row, @c_row, @d_row]
-  end
-
-  def test_player_board_has_display_board
-    skip
-    player_board = PlayerBoard.new
-    binding.pry
-    assert_equal player_board.display_board, [
-      @equals_nums_rows[:top_equals_row].rjust(50),
-      @equals_nums_rows[:nums_row].rjust(50),
-      @a_row.values.join("   ").rjust(50),
-      @b_row.values.join("   ").rjust(50),
-      @c_row.values.join("   ").rjust(50),
-      @d_row.values.join("   ").rjust(50),
-      @equals_nums_rows[:bottom_equals_row].rjust(50)
-    ]
-  end
-
   def test_player_board_has_equals_and_nums_rows
     player_board = PlayerBoard.new
-    assert_equal player_board.equals_nums_rows, {
-        :top_equals_row => ["=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "="].join(""),
+    assert_equal player_board.equals_nums_rows,
+        {:top_equals_row => ["=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "="].join(""),
         :nums_row => [".", 1, 2, 3, 4].join("   "),
-        :bottom_equals_row => ["=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "="].join("")
-    }
+        :bottom_equals_row => ["=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "="].join("")}
+  end
+
+  def test_player_can_enter_coords
+    player = Player.new
+    assert_equal player.get_coords("A2"), [:A2]
   end
 
   def test_player_board_has_a_row
@@ -117,6 +100,17 @@ class PlayerBoardTest < Minitest::Test
     refute player_board.player_three_unit_valid?([ ])
   end
 
+  def test_board_will_not_let_player_enter_coords_backwards_by_number
+    player_board = PlayerBoard.new
+    player = Player.new
+    refute player_board.player_three_unit_valid?([:C2, :C1])
+  end
+
+  def test_board_will_not_let_player_enter_coords_backwards_by_letter
+    player_board = PlayerBoard.new
+    player = Player.new
+    refute player_board.player_three_unit_valid?([:B2, :A2])
+  end
 
   def test_player_second_group_placed_is_valid
     player_board = PlayerBoard.new
@@ -151,7 +145,7 @@ class PlayerBoardTest < Minitest::Test
     player_board.two_unit_player_group_placement(player, [:A1, :B1])
     player_board.three_unit_player_group_placement(player, [:B3, :D3])
     player_board.computer_shoot until player_board.player_groups_killed?
-    assert player_board.player_same_column_killed?
+    assert player_board.player_groups_killed?
   end
 
 

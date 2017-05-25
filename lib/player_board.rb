@@ -81,20 +81,20 @@ class PlayerBoard
       second_coord = coords[1]
       if first_coord.nil? || second_coord.nil?
         puts "\n\nPlease enter valid and complete coordinates for a three-unit group, in order.\n\n"
-        false
+        return false
       elsif first_coord[1].to_i > second_coord[1].to_i
         puts "\n\nPlease enter your coordinates in letter and number order, such as: A1 C1, not C1 A1\n\n"
-        false
+        return false
       elsif first_coord[0].ord > second_coord[0].ord
         puts "\n\nPlease enter your coordinates in letter and number order, such as: A1 C1, not C1 A1\n\n"
-        false
+        return false
       elsif first_coord[0] == second_coord[0]
         player_second_group_valid?(coords) if second_coord[1].to_i == first_coord[1].to_i - 2 || second_coord[1].to_i == first_coord[1].to_i + 2
       elsif second_coord[0].ord == first_coord[0].ord + 2
         player_second_group_valid?(coords) if second_coord[1] == first_coord[1]
       else
         puts "\n\nPlease enter valid and complete coordinates for a three-unit group.\n\n"
-        false
+        return false
       end
 
     end
