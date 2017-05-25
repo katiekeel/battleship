@@ -189,7 +189,7 @@ class PlayerBoard
       if coords[0][0] == coords[1][0]
         sunk_counter += 1 if player_same_row_killed?(coords) == true
       elsif coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
-        sunk_counter += 1 if player_same_column_killed(coords) == true
+        sunk_counter += 1 if player_same_column_killed?(coords) == true
       end
 
       if sunk_counter == 3

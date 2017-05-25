@@ -101,6 +101,12 @@ class ComputerBoard
   end
 
   def computer_second_group_valid?(coords)
+    if coords[0][0].ord + 2 == coords[1][0].ord
+      middle_coord = ""
+      middle_coord << coords[0][0].ord + 1
+      middle_coord += coords[0][1]
+      middle_coord = middle_coord.to_sym
+    end
     coords.each do |coord|
       game_board.each do |row|
         if row[coord] == "X"
@@ -108,6 +114,11 @@ class ComputerBoard
         else
           true
         end
+      end
+    end
+    game_board.each do |row|
+      if row[middle_coord] == "X"
+        return false
       end
     end
   end
@@ -131,7 +142,14 @@ class ComputerBoard
 
 
   def player_shoot(player)
-    puts "\n\nEnter a coordinate to shoot at, captain!\n\n"
+    if player_shot_number == 0
+      puts "\n\nEnter a coordinate to shoot at, captain!\n\n"
+      puts player_shot_display_board
+    else
+      puts "\n\nEnter a coordinate to shoot at, captain!\n\n"
+      puts "\n\nHere is where we have previously shot:\n\n"
+      puts player_shot_display_board
+    end
     coord = player.get_coords
     coord = coord[0]
     place_player_shot(coord, player)

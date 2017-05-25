@@ -116,7 +116,7 @@ class BattleOrcs
     until @computer_board.computer_groups_killed? || @player_board.player_groups_killed?
       @computer_board.player_shoot(player) unless @player_board.player_groups_killed?
       check_if_group_killed
-      puts "Lord, press ENTER to end your turn."
+      puts "\n\nLord, press ENTER to end your turn."
       input = gets
       if input == "\n"
         @player_board.computer_shoot unless @computer_board.computer_groups_killed?
