@@ -111,7 +111,7 @@ class BattleOrcsTest < Minitest::Test
   end
 
   def test_end_sequence
-    skipgi
+    skip
     game = BattleOrcs.new
     assert_equal game.end_sequence, "\n\nThe battle is over!\n\n"
   end

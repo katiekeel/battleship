@@ -98,7 +98,6 @@ class ComputerBoard
   def computer_three_unit_valid?(coords)
     first_coord = coords[0]
     second_coord = coords[1]
-    # binding.pry
     if first_coord.nil? || second_coord.nil?
       false
     elsif first_coord[1].to_i > second_coord[1].to_i

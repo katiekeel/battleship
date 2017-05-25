@@ -5,8 +5,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/player_board.rb'
 
-require 'pry'
-
 class PlayerBoardTest < Minitest::Test
 
   def test_player_board_exists

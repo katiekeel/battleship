@@ -1,6 +1,5 @@
 require './lib/computer_board.rb'
 require './lib/player.rb'
-require 'pry'
 
 class BattleOrcs
 
