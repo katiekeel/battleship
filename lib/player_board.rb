@@ -1,5 +1,6 @@
 require './lib/board_module.rb'
 require './lib/computer_board.rb'
+require './lib/player.rb'
 
 class PlayerBoard
 
@@ -34,14 +35,14 @@ class PlayerBoard
 
   end
 
-    def two_unit_player_group_placement(player)
-      coords = player.enter_group
+    def two_unit_player_group_placement(player, coords = player.enter_group)
       @two_ship_player_coords = coords
       if player_two_unit_valid?(coords)
         place_two_unit_group(coords)
       else
         two_unit_player_group_placement(player)
       end
+      return coords
     end
 
     def player_two_unit_valid?(coords)
@@ -111,8 +112,7 @@ class PlayerBoard
       end
     end
 
-    def three_unit_player_group_placement(player)
-      coords = player.enter_group
+    def three_unit_player_group_placement(player, coords = player.enter_group)
       if player_three_unit_valid?(coords)
         coords.each do |coord|
           game_board.each do |item|
@@ -127,7 +127,7 @@ class PlayerBoard
       else
         three_unit_player_group_placement(player)
       end
-      display_board
+      coords
     end
 
     def computer_shoot

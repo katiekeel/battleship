@@ -18,6 +18,11 @@ class PlayerTest < Minitest::Test
     assert_equal player.get_coords("A2"), [:A2]
   end
 
+  def test_code_will_sanitize_coords
+    player = Player.new
+    assert_equal player.get_coords("a2 b3"), [:A2, :B3]
+  end
+
 
 
 end

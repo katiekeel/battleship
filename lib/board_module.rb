@@ -23,6 +23,7 @@ module Board
           item[coord] = "X" if item.key?(coord)
         end
       end
+      coords
     end
 
 
