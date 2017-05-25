@@ -15,7 +15,7 @@ class PlayerTest < Minitest::Test
 
   def test_player_can_enter_coords
     player = Player.new
-    assert_equal player.shoot("A2"), [:A2]
+    assert_equal player.get_coords("A2"), [:A2]
   end
 
 

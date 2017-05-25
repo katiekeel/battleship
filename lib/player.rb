@@ -1,7 +1,5 @@
 class Player
 
-  attr_accessor :shoot, :group_placement
-
   def get_coords(coords = gets.chomp)
     coords = coords.gsub(/\s+/, "").scan(/../)
     coords_to_upcase(coords)
