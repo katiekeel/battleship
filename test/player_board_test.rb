@@ -111,6 +111,13 @@ class PlayerBoardTest < Minitest::Test
     refute player_board.three_unit_player_group_placement(player, [:C4, :D2])
   end
 
+  def test_board_will_not_let_player_enter_empty_coords
+    player_board = PlayerBoard.new
+    player = Player.new
+    refute player_board.player_three_unit_valid?([ ])
+  end
+
+
   def test_player_second_group_placed_is_valid
     player_board = PlayerBoard.new
     player = Player.new
@@ -136,6 +143,15 @@ class PlayerBoardTest < Minitest::Test
     player_board.three_unit_player_group_placement(player, [:C1, :C3])
     player_board.computer_shoot until player_board.player_groups_killed?
     assert player_board.player_groups_killed?
+  end
+
+  def test_computer_can_kill_vertical_three_unit_player_group
+    player_board = PlayerBoard.new
+    player = Player.new
+    player_board.two_unit_player_group_placement(player, [:A1, :B1])
+    player_board.three_unit_player_group_placement(player, [:B3, :D3])
+    player_board.computer_shoot until player_board.player_groups_killed?
+    assert player_board.player_same_column_killed?
   end
 
 
