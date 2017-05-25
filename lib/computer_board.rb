@@ -138,6 +138,7 @@ class ComputerBoard
     end
     same_row(coords) if coords[0][0] == coords[1][0]
     same_column(coords) if coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
+    return "\n\nThe Enemy has placed their groups!\n\n"
   end
 
 

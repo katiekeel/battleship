@@ -24,6 +24,7 @@ class BattleOrcs
   end
 
   def start
+    return "The war is begun!"
     opening_sequence
     play
     end_sequence
@@ -83,6 +84,7 @@ class BattleOrcs
   end
 
   def player_group_placement
+    return "Prepare to fight!\n\n\n"
     puts "\n\nThe Enemy is in position! We must ready our attack!\n\n"
     puts "\n\nPlace your men in formation on the field. You have one group of men spanning two units, and one group of men spanning three units.\n\n"
     puts "\n\n"

@@ -61,20 +61,17 @@ class BattleOrcsTest < Minitest::Test
   end
 
   def test_start_plays_game
-    skip
     game = BattleOrcs.new
-    game.start
+    assert_equal game.start, "The war is begun!"
   end
 
   def test_computer_ship_placement
-    skip
-    game = Battleship.new
-    game.computer_ship_placement
+    game = BattleOrcs.new
+    assert_equal game.computer_group_placement, "\n\nThe Enemy has placed their groups!\n\n"
   end
 
   def test_player_ship_placement
-    skip
-    game = Battleship.new
-    game.player_ship_placement
+    game = BattleOrcs.new
+    assert_equal game.player_group_placement, "Prepare to fight!\n\n\n"
   end
 end
