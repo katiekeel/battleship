@@ -82,4 +82,30 @@ class BattleOrcsTest < Minitest::Test
     game = BattleOrcs.new
     assert_equal game.player_group_placement, "Prepare to fight!\n\n\n"
   end
+
+  def test_shoot
+    game = BattleOrcs.new
+    assert_equal game.shoot, "\n\nWe shall strike first! Forth to victory!\n\n"
+  end
+
+  def test_end_player_turn
+    game = BattleOrcs.new
+    assert_equal game.end_player_turn("\n"), game.shoot
+  end
+
+  def test_check_if_group_killed
+    game = BattleOrcs.new
+    game.computer_group_placement
+    assert_equal game.check_if_group_killed, "yep"
+  end
+
+  def test_end_sequence
+    game = BattleOrcs.new
+    assert_equal game.end_sequence, "\n\nThe battle is over!\n\n"
+  end
+
+  def test_game_timer
+    game = BattleOrcs.new
+    assert game.game_timer
+  end
 end

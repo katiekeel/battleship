@@ -24,18 +24,18 @@ class BattleOrcs
   end
 
   def start
-    return "\n\nThe war against our Enemy is begun!"
     puts "\n\nThe war against our Enemy is begun!"
+    return "\n\nThe war against our Enemy is begun!"
     opening_sequence
     play
     end_sequence
   end
 
   def opening_sequence
-    return "You have been asked to command a battalion of the allied races of Middle Earth against the Dark Lord Sauron. Would you like to (f)ight in the battle, (l)isten to your captain's orders, or (d)esert the battle as a cowardly traitor?"
     puts "\n\n\n\n"
     puts "You have been asked to command a battalion of the allied races of Middle Earth against the Dark Lord Sauron. Would you like to (f)ight in the battle, (l)isten to your captain's orders, or (d)esert the battle as a cowardly traitor?"
     puts "\n\n"
+    return "You have been asked to command a battalion of the allied races of Middle Earth against the Dark Lord Sauron. Would you like to (f)ight in the battle, (l)isten to your captain's orders, or (d)esert the battle as a cowardly traitor?"
   end
 
   def play(input = gets.chomp)
@@ -56,29 +56,26 @@ class BattleOrcs
 
   def instructions
     puts "===== INSTRUCTIONS ====="
-    puts "\n"
-    puts "The Dark Lord has positioned his largest orc battalion upon the Plateau of Gorgoroth. We will shoot flaming arrows into their area; we will\nrejoice in their screams if they are hit, and shoot again if we miss, until they are destroyed!\n\n"
+    puts "\nThe Dark Lord has positioned his largest orc battalion upon the Plateau of Gorgoroth. We will shoot flaming arrows into their area; we will\nrejoice in their screams if they are hit, and shoot again if we miss, until they are destroyed!\n\n"
     puts "To kill these foul orcs, command your men to fire on their position using single coordinates, such as: A1.\n\n"
     puts "You, captain, will have one group of men spanning two units, and one group of men spanning three units.\n\n"
     puts "To place a group of men, enter their starting and ending coordinates. For example, a two unit group might be at A1 B1, or at B3 C3. Groups\nmay not be placed diagonally nor wrap to opposite sides of the field.\n\n"
     puts "A three unit group might be placed at C1 C3, or A1 A3. If you have previously placed a group in one of these coordinates, you may not place\nanother group there.\n\n"
     puts "You and the Enemy will take turns firing missiles at the other; whoever destroys all of the other's men first wins the battle!\n\n"
-    puts "\n"
-    puts "========================"
+    puts "\n========================"
     return "===== INSTRUCTIONS ====="
     opening_sequence
     play
   end
 
   def coward_quit
+    puts "\nYou are a coward and a traitor to Middle Earth. Good riddance.\n\n\n"
     return "You are a coward and a traitor to Middle Earth. Good riddance."
-    puts "\n"
-    puts "You are a coward and a traitor to Middle Earth. Good riddance.\n\n\n"
   end
 
   def invalid_input
-    return "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
     puts "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
+    return "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
     play
   end
 
@@ -88,7 +85,6 @@ class BattleOrcs
   end
 
   def player_group_placement
-    return "Prepare to fight!\n\n\n"
     puts "\n\nThe Enemy is in position! We must ready our attack!\n\n"
     puts "\n\nPlace your men in formation on the field. You have one group of men spanning two units, and one group of men spanning three units.\n\n"
     puts "\n\n"
@@ -114,24 +110,25 @@ class BattleOrcs
     puts @player_board.display_board
     puts "\n\n"
     puts "Prepare to fight!\n\n\n"
+    return "Prepare to fight!\n\n\n"
   end
 
   def shoot
+    return "\n\nWe shall strike first! Forth to victory!\n\n"
     puts "\n\nWe shall strike first! Forth to victory!\n\n"
     until @computer_board.computer_groups_killed? || @player_board.player_groups_killed?
       @computer_board.player_shoot(player) unless @player_board.player_groups_killed?
       check_if_group_killed
       @player_board.computer_shoot unless @computer_board.computer_groups_killed?
       check_if_group_killed
+      puts "\n\nMy liege, press ENTER to end your turn."
       end_player_turn
     end
   end
 
-  def end_player_turn
-    puts "\n\nMy liege, press ENTER to end your turn."
-    input = gets
+  def end_player_turn(input = gets)
     if input == "\n"
-      check_if_group_killed
+      shoot
     else
       puts "\n\nMy liege, PLEASE PRESS ENTER to end your turn.\n\n"
       input = gets
@@ -139,6 +136,7 @@ class BattleOrcs
   end
 
   def check_if_group_killed
+    return "yep"
     if @player_board.player_two_group_killed?
       unless @player_two_already_killed == true
         puts "\n\nMy liege, they have destroyed our two-unit group! We must hasten to victory!\n\n"
@@ -163,6 +161,8 @@ class BattleOrcs
   end
 
   def end_sequence
+    return "\n\nThe battle is over!\n\n"
+    puts "\n\nThe battle is over!\n\n"
     if @computer_board.computer_groups_killed?
       puts "\n\nVICTORY! Victory this day against the accursed Enemy.\n\n"
       puts "\n\nCaptain, your efforts required #{@computer_board.player_shot_number} missiles this day."
