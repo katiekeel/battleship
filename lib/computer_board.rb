@@ -82,6 +82,19 @@ class ComputerBoard
     end
   end
 
+  def three_unit_computer_group_placement
+    coords = get_random_keys.flatten.sample(2)
+    until computer_three_unit_valid?(coords)
+      coords = get_random_keys.flatten.sample(2)
+    end
+    @three_ship_computer_coords = coords
+    place_two_unit_group(coords)
+    place_same_row(coords) if coords[0][0] == coords[1][0]
+    place_same_column(coords) if coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
+    return "\n\nThe Enemy has placed their groups!\n\n"
+  end
+
+
   def computer_three_unit_valid?(coords)
     first_coord = coords[0]
     second_coord = coords[1]
@@ -102,12 +115,6 @@ class ComputerBoard
   end
 
   def computer_second_group_valid?(coords)
-    if coords[0][0].ord + 2 == coords[1][0].ord
-      middle_coord = ""
-      middle_coord << coords[0][0].ord + 1
-      middle_coord += coords[0][1]
-      middle_coord = middle_coord.to_sym
-    end
     coords.each do |coord|
       game_board.each do |row|
         if row[coord] == "X"
@@ -117,29 +124,8 @@ class ComputerBoard
         end
       end
     end
-    game_board.each do |row|
-      if row[middle_coord] == "X"
-        return false
-      end
-    end
-  end
-
-  def three_unit_computer_group_placement
-    coords = get_random_keys.flatten.sample(2)
-    until computer_three_unit_valid?(coords)
-      coords = get_random_keys.flatten.sample(2)
-    end
-    @three_ship_computer_coords = coords
-    coords.each do |coord|
-      game_board.each do |item|
-        if item.key?(coord)
-          item[coord] = "X"
-        end
-      end
-    end
-    same_row(coords) if coords[0][0] == coords[1][0]
-    same_column(coords) if coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
-    return "\n\nThe Enemy has placed their groups!\n\n"
+    coord = same_column(coords)
+    check_middle_coord(coord)
   end
 
 
@@ -226,11 +212,7 @@ class ComputerBoard
       end
     end
 
-    if sunk_counter == 2
-      return true
-    else
-      return false
-    end
+    two_sunk?(sunk_counter)
   end
 
   def computer_three_group_killed?
@@ -244,28 +226,15 @@ class ComputerBoard
       end
     end
 
-    if coords[0][0] == coords[1][0]
-      sunk_counter += 1 if computer_same_row_killed(coords) == true
-    elsif coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
-      sunk_counter += 1 if computer_same_column_killed(coords) == true
-    end
+    sunk_counter += 1 if computer_same_row_killed?(coords) == true
+    sunk_counter += 1 if computer_same_column_killed?(coords) == true
 
-    if sunk_counter == 3
-      return true
-    else
-      return false
-    end
+    three_sunk?(sunk_counter)
+
   end
 
-  def computer_same_row_killed(coords)
-    if coords[0][0] == coords[1][0]
-      coord = ""
-      coord << coords[0][0]
-      coord_num = coords[0][1].to_i + 1
-      coord += coord_num.to_s
-      coord = coord.to_sym
-    end
-
+  def computer_same_row_killed?(coords)
+    coord = same_row(coords) if coords[0][0] == coords[1][0]
     player_shot_game_board.each do |item|
       if item.key?(coord)
         return true if item[coord] == "H"
@@ -273,14 +242,8 @@ class ComputerBoard
     end
   end
 
-  def computer_same_column_killed(coords)
-    if coords[0][0].ord + 2 == coords[1][0].ord
-      coord = ""
-      coord << coords[0][0].ord + 1
-      coord += coords[0][1]
-      coord = coord.to_sym
-    end
-
+  def computer_same_column_killed?(coords)
+    coord = same_column(coords) if coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
     player_shot_game_board.each do |item|
       if item.key?(coord)
         return true if item[coord] == "H"

@@ -1,5 +1,6 @@
 module Board
 
+
   def display_board
     display_board = [
       @equals_nums_rows[:top_equals_row].rjust(50),
@@ -35,12 +36,12 @@ module Board
         coord += coord_num.to_s
         coord = coord.to_sym
       end
+      coord
+    end
 
-      game_board.each do |item|
-        if item.key?(coord)
-          item[coord] = "X"
-        end
-      end
+    def place_same_row(coords)
+      coord = same_row(coords)
+      place_two_unit_group([coord])
     end
 
     def same_column(coords)
@@ -50,12 +51,12 @@ module Board
         coord += coords[0][1]
         coord = coord.to_sym
       end
-    game_board.each do |item|
-      if item.key?(coord)
-        item[coord] = "X"
-      end
     end
-  end
+
+    def place_same_column(coords)
+      coord = same_column(coords)
+      place_two_unit_group([coord])
+    end
 
 
   def get_random_keys
@@ -81,6 +82,30 @@ module Board
       item.sample(2)
     end
     random_keys
+  end
+
+  def check_middle_coord(coord)
+    game_board.each do |row|
+      if row[coord] == "X"
+        return false
+      end
+    end
+  end
+
+  def two_sunk?(sunk_counter)
+    if sunk_counter == 2
+      return true
+    else
+      return false
+    end
+  end
+
+  def three_sunk?(sunk_counter)
+    if sunk_counter == 3
+      return true
+    else
+      return false
+    end
   end
 
 

@@ -74,6 +74,18 @@ class PlayerBoard
       end
     end
 
+    def three_unit_player_group_placement(player, coords = player.enter_group)
+      if player_three_unit_valid?(coords)
+        place_two_unit_group(coords)
+        @three_ship_player_coords = coords
+        place_same_row(coords) if coords[0][0] == coords[1][0]
+        place_same_column(coords) if coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
+      else
+        return false
+        three_unit_player_group_placement(player)
+      end
+      coords
+    end
 
     def player_three_unit_valid?(coords)
       first_coord = coords[0]
@@ -109,25 +121,8 @@ class PlayerBoard
           end
         end
       end
-    end
-
-    def three_unit_player_group_placement(player, coords = player.enter_group)
-      if player_three_unit_valid?(coords)
-        coords.each do |coord|
-          game_board.each do |item|
-            if item.key?(coord)
-              item[coord] = "X"
-            end
-          end
-        end
-        @three_ship_player_coords = coords
-        same_row(coords) if coords[0][0] == coords[1][0]
-        same_column(coords) if coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
-      else
-        return false
-        three_unit_player_group_placement(player)
-      end
-      coords
+      coord = same_column(coords)
+      check_middle_coord(coord)
     end
 
     def computer_shoot
@@ -168,12 +163,9 @@ class PlayerBoard
         end
       end
 
-      if sunk_counter == 2
-        return true
-      else
-        return false
-      end
+      two_sunk?(sunk_counter)
     end
+
 
 
     def player_three_group_killed?
@@ -187,28 +179,16 @@ class PlayerBoard
         end
       end
 
-      if coords[0][0] == coords[1][0]
-        sunk_counter += 1 if player_same_row_killed?(coords) == true
-      elsif coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
-        sunk_counter += 1 if player_same_column_killed?(coords) == true
-      end
+      sunk_counter += 1 if player_same_row_killed?(coords) == true
+      sunk_counter += 1 if player_same_column_killed?(coords) == true
 
-      if sunk_counter == 3
-        return true
-      else
-        return false
-      end
+      three_sunk? (sunk_counter)
     end
 
-    def player_same_row_killed?(coords)
-      if coords[0][0] == coords[1][0]
-        coord = ""
-        coord << coords[0][0]
-        coord_num = coords[0][1].to_i + 1
-        coord += coord_num.to_s
-        coord = coord.to_sym
-      end
 
+
+    def player_same_row_killed?(coords)
+      coord = same_row(coords) if coords[0][0] == coords[1][0]
       game_board.each do |item|
         if item.key?(coord)
           return true if item[coord] == "H"
@@ -217,12 +197,7 @@ class PlayerBoard
     end
 
     def player_same_column_killed?(coords)
-      if coords[0][0].ord + 2 == coords[1][0].ord
-        coord = ""
-        coord << coords[0][0].ord + 1
-        coord += coords[0][1]
-        coord = coord.to_sym
-      end
+      coord = same_column(coords) if coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
       game_board.each do |item|
         if item.key?(coord)
           return true if item[coord] == "H"
