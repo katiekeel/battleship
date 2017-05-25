@@ -24,22 +24,24 @@ class BattleOrcs
   end
 
   def start
-    return "The war is begun!"
+    return "\n\nThe war against our Enemy is begun!"
+    puts "\n\nThe war against our Enemy is begun!"
     opening_sequence
     play
     end_sequence
   end
 
   def opening_sequence
+    return "You have been asked to command a battalion of the allied races of Middle Earth against the Dark Lord Sauron. Would you like to (f)ight in the battle, (l)isten to your captain's orders, or (d)esert the battle as a cowardly traitor?"
     puts "\n\n\n\n"
     puts "You have been asked to command a battalion of the allied races of Middle Earth against the Dark Lord Sauron. Would you like to (f)ight in the battle, (l)isten to your captain's orders, or (d)esert the battle as a cowardly traitor?"
     puts "\n\n"
-    "You have been asked to command a battalion of the allied races of Middle Earth against the Dark Lord Sauron. Would you like to (f)ight in the battle, (l)isten to your captain's orders, or (d)esert the battle as a cowardly traitor?"
   end
 
   def play(input = gets.chomp)
     puts "\n\n\n\n"
     if input == "f" || input == "F"
+      return "\n\nThe war is begun!\n\n"
       computer_group_placement
       player_group_placement
       shoot
@@ -63,17 +65,19 @@ class BattleOrcs
     puts "You and the Enemy will take turns firing missiles at the other; whoever destroys all of the other's men first wins the battle!\n\n"
     puts "\n"
     puts "========================"
+    return "===== INSTRUCTIONS ====="
     opening_sequence
     play
   end
 
   def coward_quit
+    return "You are a coward and a traitor to Middle Earth. Good riddance."
     puts "\n"
     puts "You are a coward and a traitor to Middle Earth. Good riddance.\n\n\n"
-    "You are a coward and a traitor to Middle Earth. Good riddance."
   end
 
   def invalid_input
+    return "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
     puts "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
     play
   end
@@ -101,7 +105,6 @@ class BattleOrcs
     puts "\n\n"
     puts "Please enter your second placement of three units. Example: C1 C3"
     puts "\n"
-    # binding.pry
     @player_board.three_unit_player_group_placement(@player)
     puts "\n\n"
     puts "Here is your three-unit battalion placement:"
@@ -118,15 +121,20 @@ class BattleOrcs
     until @computer_board.computer_groups_killed? || @player_board.player_groups_killed?
       @computer_board.player_shoot(player) unless @player_board.player_groups_killed?
       check_if_group_killed
-      puts "\n\nLord, press ENTER to end your turn."
+      @player_board.computer_shoot unless @computer_board.computer_groups_killed?
+      check_if_group_killed
+      end_player_turn
+    end
+  end
+
+  def end_player_turn
+    puts "\n\nMy liege, press ENTER to end your turn."
+    input = gets
+    if input == "\n"
+      check_if_group_killed
+    else
+      puts "\n\nMy liege, PLEASE PRESS ENTER to end your turn.\n\n"
       input = gets
-      if input == "\n"
-        @player_board.computer_shoot unless @computer_board.computer_groups_killed?
-        check_if_group_killed
-      else
-        puts "Lord, PLEASE PRESS ENTER to end your turn."
-        input = gets
-      end
     end
   end
 

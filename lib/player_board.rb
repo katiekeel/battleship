@@ -1,5 +1,4 @@
 require './lib/board_module.rb'
-# require './lib/computer_board.rb'
 require './lib/player.rb'
 
 class PlayerBoard

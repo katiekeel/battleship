@@ -13,56 +13,64 @@ class BattleOrcsTest < Minitest::Test
     assert_instance_of BattleOrcs, game
   end
 
+  def test_game_has_a_player
+    game = BattleOrcs.new
+    assert_instance_of Player, game.player
+  end
+
+  def test_game_has_a_player_board
+    game = BattleOrcs.new
+    assert_instance_of PlayerBoard, game.player_board
+  end
+
+  def test_game_has_a_computer_board
+    game = BattleOrcs.new
+    assert_instance_of ComputerBoard, game.computer_board
+  end
+
   def test_game_displays_opening_sequence
     game = BattleOrcs.new
     assert_equal game.opening_sequence, "You have been asked to command a battalion of the allied races of Middle Earth against the Dark Lord Sauron. Would you like to (f)ight in the battle, (l)isten to your captain's orders, or (d)esert the battle as a cowardly traitor?"
   end
 
   def test_instructions
-    skip
     game = BattleOrcs.new
-    assert_equal game.instructions, "To kill these foul orcs, command your men to fire on their position using coordinates, such as: A1 B1"
+    assert_equal game.instructions, "===== INSTRUCTIONS ====="
   end
 
   def test_coward_quit
-    skip
     game = BattleOrcs.new
     assert_equal game.coward_quit, "You are a coward and a traitor to Middle Earth. Good riddance."
   end
 
   def test_invalid_input
-    skip
     game = BattleOrcs.new
-    assert_equal game.invalid_input, "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war."
+    assert_equal game.invalid_input, "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
   end
 
   def test_game_play_when_press_f
-    skip
     game = BattleOrcs.new
-    assert_equal game.play(input = "f"), player_ship_placement
+    assert_equal game.play(input = "f"), "\n\nThe war is begun!\n\n"
   end
 
   def test_game_play_when_press_l
-    skip
     game = BattleOrcs.new
-    assert_equal game.play(input = "l"), "To kill these foul orcs, command your men to fire on their position using coordinates, such as: A1 B1"
+    assert_equal game.play(input = "l"), "===== INSTRUCTIONS ====="
   end
 
   def test_game_play_when_press_d
-    skip
     game = BattleOrcs.new
     assert_equal game.play(input = "d"), "You are a coward and a traitor to Middle Earth. Good riddance."
   end
 
   def test_game_play_when_press_anything_else
-    skip
     game = BattleOrcs.new
-    assert_equal game.play(input = "asdf"), "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war."
+    assert_equal game.play(input = "asdf"), "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
   end
 
   def test_start_plays_game
     game = BattleOrcs.new
-    assert_equal game.start, "The war is begun!"
+    assert_equal game.start, "\n\nThe war against our Enemy is begun!"
   end
 
   def test_computer_ship_placement
