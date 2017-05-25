@@ -40,6 +40,7 @@ class PlayerBoard
       if player_two_unit_valid?(coords)
         place_two_unit_group(coords)
       else
+        return false
         two_unit_player_group_placement(player)
       end
       return coords
@@ -78,7 +79,6 @@ class PlayerBoard
     def player_three_unit_valid?(coords)
       first_coord = coords[0]
       second_coord = coords[1]
-      # binding.pry
       if first_coord.nil? || second_coord.nil?
         puts "\n\nPlease enter valid and complete coordinates for a three-unit group, in order.\n\n"
         false
@@ -125,6 +125,7 @@ class PlayerBoard
         same_row(coords) if coords[0][0] == coords[1][0]
         same_column(coords) if coords[0][0].ord + 2 == coords[1][0].ord && coords[0][0] != coords[1][0]
       else
+        return false
         three_unit_player_group_placement(player)
       end
       coords
@@ -155,6 +156,7 @@ class PlayerBoard
         end
       end
       @computer_shot_number += 1
+      return @computer_shot_number
     end
 
     def player_two_group_killed?

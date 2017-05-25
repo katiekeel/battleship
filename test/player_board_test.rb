@@ -79,9 +79,64 @@ class PlayerBoardTest < Minitest::Test
     assert_equal player_board.three_unit_player_group_placement(player, [:C1, :C3]), [:C1, :C3]
   end
 
+  def test_player_can_place_both_groups
+    player_board = PlayerBoard.new
+    player = Player.new
+    player_board.two_unit_player_group_placement(player, [:A2, :B2])
+    player_board.three_unit_player_group_placement(player, [:C1, :C3])
+    refute player_board.player_groups_killed?
+  end
+
+  def test_player_two_unit_group_coords_are_valid
+    player_board = PlayerBoard.new
+    assert player_board.player_two_unit_valid?([:A2, :B2])
+    refute player_board.player_two_unit_valid?([:B3, :C4])
+  end
+
+  def test_player_three_unit_group_coords_are_valid
+    player_board = PlayerBoard.new
+    assert player_board.player_three_unit_valid?([:C1, :C3])
+    refute player_board.player_three_unit_valid?([:D2, :B4])
+  end
+
+  def test_board_will_not_let_player_place_invalid_two_unit_group
+    player_board = PlayerBoard.new
+    player = Player.new
+    refute player_board.two_unit_player_group_placement(player, [:B2, :C4])
+  end
+
+  def test_board_will_not_let_player_place_invalid_three_unit_group
+    player_board = PlayerBoard.new
+    player = Player.new
+    refute player_board.three_unit_player_group_placement(player, [:C4, :D2])
+  end
+
+  def test_player_second_group_placed_is_valid
+    player_board = PlayerBoard.new
+    player = Player.new
+    player_board.two_unit_player_group_placement(player, [:A2, :B2])
+    assert player_board.player_second_group_valid?([:C1, :C3])
+    refute player_board.player_second_group_valid?([:A2, :A4])
+  end
+
   def test_computer_can_shoot_at_player_board
     player_board = PlayerBoard.new
-    assert_equal player_board.computer_shoot,
+    assert_equal player_board.computer_shoot, player_board.computer_shot_number
   end
+
+  def test_place_computer_shot
+    player_board = PlayerBoard.new
+    assert_equal player_board.place_computer_shot(:A4), player_board.computer_shot_number
+  end
+
+  def test_computer_will_shoot_until_player_ships_are_sunk
+    player_board = PlayerBoard.new
+    player = Player.new
+    player_board.two_unit_player_group_placement(player, [:A1, :B1])
+    player_board.three_unit_player_group_placement(player, [:C1, :C3])
+    player_board.computer_shoot until player_board.player_groups_killed?
+    assert player_board.player_groups_killed?
+  end
+
 
 end
