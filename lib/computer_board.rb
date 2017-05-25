@@ -163,28 +163,37 @@ class ComputerBoard
       row_counter += 1
       if row.key?(coord)
         if row[coord] == "X"
-          if player_shot_game_board[row_counter][coord] == "M" || player_shot_game_board[row_counter][coord] == "H"
-            puts "\n\nLiege, you have already shot in that location! Please try again.\n\n"
-            player_shoot(player)
-          else
-            player_shot_game_board[row_counter][coord] = "H"
-            puts "\n\nYou have struck an orc, valiant captain!\n\n"
-            puts player_shot_display_board
-          end
+          row_has_group(row, coord, row_counter)
         elsif row[coord] == " "
-          if player_shot_game_board[row_counter][coord] == "M" || player_shot_game_board[row_counter][coord] == "H"
-            puts "\n\nLiege, you have already shot in that location! Please try again.\n\n"
-            player_shoot(player)
-          else
-            player_shot_game_board[row_counter][coord] = "M"
-            puts "\n\nSadly, lord, you have missed.\n\n"
-            puts player_shot_display_board
-          end
+          row_does_not_have_group(row, coord, row_counter)
         end
       end
     end
     @player_shot_number += 1
   end
+
+  def row_has_group(row, coord, row_counter)
+    if player_shot_game_board[row_counter][coord] == "M" || player_shot_game_board[row_counter][coord] == "H"
+      puts "\n\nLiege, you have already shot in that location! Please try again.\n\n"
+      player_shoot(player)
+    else
+      player_shot_game_board[row_counter][coord] = "H"
+      puts "\n\nYou have struck an orc, valiant captain!\n\n"
+      puts player_shot_display_board
+    end
+  end
+
+  def row_does_not_have_group(row, coord, row_counter)
+    if player_shot_game_board[row_counter][coord] == "M" || player_shot_game_board[row_counter][coord] == "H"
+      puts "\n\nLiege, you have already shot in that location! Please try again.\n\n"
+      player_shoot(player)
+    else
+      player_shot_game_board[row_counter][coord] = "M"
+      puts "\n\nSadly, lord, you have missed.\n\n"
+      puts player_shot_display_board
+    end
+  end
+
 
   def player_shot_game_board
     player_shot_game_board = [

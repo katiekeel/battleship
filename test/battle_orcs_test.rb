@@ -34,6 +34,7 @@ class BattleOrcsTest < Minitest::Test
   end
 
   def test_instructions
+    skip
     game = BattleOrcs.new
     assert_equal game.instructions, "===== INSTRUCTIONS ====="
   end
@@ -44,31 +45,37 @@ class BattleOrcsTest < Minitest::Test
   end
 
   def test_invalid_input
+    skip
     game = BattleOrcs.new
     assert_equal game.invalid_input, "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
   end
 
   def test_game_play_when_press_f
+    skip
     game = BattleOrcs.new
     assert_equal game.play(input = "f"), "\n\nThe war is begun!\n\n"
   end
 
   def test_game_play_when_press_l
+    skip
     game = BattleOrcs.new
     assert_equal game.play(input = "l"), "===== INSTRUCTIONS ====="
   end
 
   def test_game_play_when_press_d
+    skip
     game = BattleOrcs.new
     assert_equal game.play(input = "d"), "You are a coward and a traitor to Middle Earth. Good riddance."
   end
 
   def test_game_play_when_press_anything_else
+    skip
     game = BattleOrcs.new
     assert_equal game.play(input = "asdf"), "Please decide what you would like to do: (f)ight, (l)isten to instructions, or (d)esert the war.\n\n"
   end
 
   def test_start_plays_game
+    skip
     game = BattleOrcs.new
     assert_equal game.start, "\n\nThe war against our Enemy is begun!"
   end
@@ -79,27 +86,32 @@ class BattleOrcsTest < Minitest::Test
   end
 
   def test_player_ship_placement
+    skip
     game = BattleOrcs.new
     assert_equal game.player_group_placement, "Prepare to fight!\n\n\n"
   end
 
   def test_shoot
+    skip
     game = BattleOrcs.new
     assert_equal game.shoot, "\n\nWe shall strike first! Forth to victory!\n\n"
   end
 
   def test_end_player_turn
+    skip
     game = BattleOrcs.new
     assert_equal game.end_player_turn("\n"), game.shoot
   end
 
   def test_check_if_group_killed
+    skip
     game = BattleOrcs.new
     game.computer_group_placement
-    assert_equal game.check_if_group_killed, "yep"
+    refute game.check_if_group_killed
   end
 
   def test_end_sequence
+    skipgi
     game = BattleOrcs.new
     assert_equal game.end_sequence, "\n\nThe battle is over!\n\n"
   end

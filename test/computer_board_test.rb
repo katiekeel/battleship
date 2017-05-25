@@ -86,12 +86,6 @@ class ComputerBoardTest < Minitest::Test
     refute computer_board.computer_second_group_valid?(computer_board.three_ship_computer_coords)
   end
 
-  def test_player_can_shoot_at_computer_board
-    computer_board = ComputerBoard.new
-    player = Player.new
-    assert_equal computer_board.player_shoot(player, [:A4]), computer_board.player_shot_number
-  end
-
   def test_place_player_shot
     computer_board = ComputerBoard.new
     player = Player.new
