@@ -83,7 +83,8 @@ class BattleOrcs
   end
 
   def player_group_placement
-    puts "Place your men in formation on the field. You have one group of men spanning two units, and one group of men spanning three units."
+    puts "\n\nThe Enemy is in position! We must ready our attack!\n\n"
+    puts "\n\nPlace your men in formation on the field. You have one group of men spanning two units, and one group of men spanning three units.\n\n"
     puts "\n\n"
     puts "Here is a map of the field:"
     puts "\n\n"
@@ -107,7 +108,7 @@ class BattleOrcs
     puts "\n\n\n"
     puts @player_board.display_board
     puts "\n\n"
-    puts "The Enemy is also in position! Prepare to fight!\n\n\n"
+    puts "Prepare to fight!\n\n\n"
   end
 
   def shoot
@@ -115,8 +116,15 @@ class BattleOrcs
     until @computer_board.computer_groups_killed? || @player_board.player_groups_killed?
       @computer_board.player_shoot(player) unless @player_board.player_groups_killed?
       check_if_group_killed
-      @player_board.computer_shoot unless @computer_board.computer_groups_killed?
-      check_if_group_killed
+      puts "Lord, press ENTER to end your turn."
+      input = gets
+      if input == "\n"
+        @player_board.computer_shoot unless @computer_board.computer_groups_killed?
+        check_if_group_killed
+      else
+        puts "Lord, PLEASE PRESS ENTER to end your turn."
+        input = gets
+      end
     end
   end
 
