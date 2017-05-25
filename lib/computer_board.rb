@@ -1,6 +1,9 @@
-require './player_board.rb'
+require './lib/board_module.rb'
+require './lib/player_board.rb'
 
 class ComputerBoard
+
+  include Board
 
   attr_reader :equals_nums_rows,
               :a_row,
@@ -28,12 +31,12 @@ class ComputerBoard
 
     @d_row = {:D => "D", :D1 => " ", :D2 => " ", :D3 => " ", :D4 => " "}
 
-    # @player_view_equals_nums_rows = {
-    #    :top_equals_row => ["=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "="].join(""),
-    #    :nums_row => [".", 1, 2, 3, 4].join("   "),
-    #    :bottom_equals_row => ["=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "="].join("")
-    #
-    #  }
+    @player_view_equals_nums_rows = {
+       :top_equals_row => ["=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "="].join(""),
+       :nums_row => [".", 1, 2, 3, 4].join("   "),
+       :bottom_equals_row => ["=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "=", "="].join("")
+
+     }
 
     @player_view_a_row = {:A => "A", :A1 => " ", :A2 => " ", :A3 => " ", :A4 => " "}
 
@@ -42,6 +45,8 @@ class ComputerBoard
     @player_view_c_row = {:C => "C", :C1 => " ", :C2 => " ", :C3 => " ", :C4 => " "}
 
     @player_view_d_row =  {:D => "D", :D1 => " ", :D2 => " ", :D3 => " ", :D4 => " "}
+
+    @player_shot_number = 0
 
     @game_timer = Time.now
 
@@ -55,30 +60,6 @@ class ComputerBoard
     place_two_unit_group(coords)
   end
 
-  def get_random_keys
-    random_keys = []
-    game_board.each do |thing|
-      next if thing.is_a? String
-      random_keys << thing.keys
-    end
-    delete_invalid_keys(random_keys)
-  end
-
-  def delete_invalid_keys(random_keys)
-    random_keys.map! do |item|
-      item.drop_while do |key|
-        key == :A || key == :B || key == :C || key == :D
-      end
-    end
-    valid_random_keys(random_keys)
-  end
-
-  def valid_random_keys(random_keys)
-    random_keys.map! do |item|
-      item.sample(2)
-    end
-    random_keys
-  end
 
   def computer_two_unit_valid?(coords)
     first_coord = coords[0]

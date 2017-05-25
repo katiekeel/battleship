@@ -1,6 +1,9 @@
+require './lib/board_module.rb'
 require './lib/computer_board.rb'
 
 class PlayerBoard
+
+  include Board
 
   attr_reader :equals_nums_rows,
               :a_row,
@@ -127,38 +130,8 @@ class PlayerBoard
       display_board
     end
 
-    def same_row(coords)
-      if coords[0][0] == coords[1][0]
-        coord = ""
-        coord << coords[0][0]
-        coord_num = coords[0][1].to_i + 1
-        coord += coord_num.to_s
-        coord = coord.to_sym
-      end
-
-      game_board.each do |item|
-        if item.key?(coord)
-          item[coord] = "X"
-        end
-      end
-    end
-
-    def same_column(coords)
-      if coords[0][0].ord + 2 == coords[1][0].ord
-        coord = ""
-        coord << coords[0][0].ord + 1
-        coord += coords[0][1]
-        coord = coord.to_sym
-      end
-      game_board.each do |item|
-        if item.key?(coord)
-          item[coord] = "X"
-        end
-      end
-    end
-
     def computer_shoot
-      coord = get_random_keys.sample(1)
+      coord = get_random_keys.flatten.sample(1)
       coord = coord[0]
       place_computer_shot(coord)
     end

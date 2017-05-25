@@ -24,3 +24,63 @@ module Board
         end
       end
     end
+
+
+    def same_row(coords)
+      if coords[0][0] == coords[1][0]
+        coord = ""
+        coord << coords[0][0]
+        coord_num = coords[0][1].to_i + 1
+        coord += coord_num.to_s
+        coord = coord.to_sym
+      end
+
+      game_board.each do |item|
+        if item.key?(coord)
+          item[coord] = "X"
+        end
+      end
+    end
+
+    def same_column(coords)
+      if coords[0][0].ord + 2 == coords[1][0].ord
+        coord = ""
+        coord << coords[0][0].ord + 1
+        coord += coords[0][1]
+        coord = coord.to_sym
+      end
+    game_board.each do |item|
+      if item.key?(coord)
+        item[coord] = "X"
+      end
+    end
+  end
+
+
+  def get_random_keys
+    random_keys = []
+    game_board.each do |thing|
+      next if thing.is_a? String
+      random_keys << thing.keys
+    end
+    delete_invalid_keys(random_keys)
+  end
+
+  def delete_invalid_keys(random_keys)
+    random_keys.map! do |item|
+      item.drop_while do |key|
+        key == :A || key == :B || key == :C || key == :D
+      end
+    end
+    valid_random_keys(random_keys)
+  end
+
+  def valid_random_keys(random_keys)
+    random_keys.map! do |item|
+      item.sample(2)
+    end
+    random_keys
+  end
+
+
+end

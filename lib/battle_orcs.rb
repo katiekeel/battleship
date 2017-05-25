@@ -1,15 +1,22 @@
-require './lib/board.rb'
+require './lib/computer_board.rb'
 require './lib/player.rb'
 require 'pry'
 
 class BattleOrcs
 
-  attr_accessor :player, :computer_board, :player_board, :game_timer, :player_two_already_killed, :player_three_already_killed, :computer_two_already_killed, :computer_three_already_killed
+  attr_accessor :player,
+                :computer_board,
+                :player_board,
+                :game_timer,
+                :player_two_already_killed,
+                :player_three_already_killed,
+                :computer_two_already_killed,
+                :computer_three_already_killed
 
   def initialize
     @player = Player.new
-    @computer_board = Board.new
-    @player_board = Board.new
+    @computer_board = ComputerBoard.new
+    @player_board = PlayerBoard.new
     @computer_two_already_killed = false
     @computer_two_already_killed = false
     @player_two_already_killed = false
